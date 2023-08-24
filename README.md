@@ -14,4 +14,6 @@ Minimal Container to use Zig toolchain. Downloaded by [zigup](https://github.com
 docker run --rm -v $(pwd):/app -w /app kassany/ziglang:{tagname}
 ## debian
 docker run --rm -it -v $(pwd):/app -w /app kassany/bookworm-ziglang:{tagname} bash
+## alpine
+docker run --rm -it -v $(pwd):/app -w /app kassany/alpine-ziglang:{tagname} ash
 ```
