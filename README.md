@@ -10,5 +10,8 @@ Minimal Container to use Zig toolchain. Downloaded by [zigup](https://github.com
 - `0.11.0`: `0.11.0`
 
 ```bash
+## busybox
 docker run --rm -v $(pwd):/app -w /app kassany/ziglang:{tagname}
+## debian
+docker run --rm -it -v $(pwd):/app -w /app kassany/bookworm-ziglang:{tagname} bash
 ```
