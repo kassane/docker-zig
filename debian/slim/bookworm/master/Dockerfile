@@ -1,5 +1,5 @@
 ARG IMAGE=debian
-ARG BASE_VERSION=bullseye
+ARG BASE_VERSION=bookworm-slim
 ARG IMAGE_ARCH=amd64
 
 FROM --platform=linux/${IMAGE_ARCH} ${IMAGE}:${BASE_VERSION}

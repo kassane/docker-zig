@@ -1,10 +1,10 @@
 ARG IMAGE=debian
-ARG BASE_VERSION=bullseye
+ARG BASE_VERSION=bookworm-slim
 ARG IMAGE_ARCH=amd64
 
 FROM --platform=linux/${IMAGE_ARCH} ${IMAGE}:${BASE_VERSION}
 
-ENV ZIG_VERSION=master
+ENV ZIG_VERSION=0.11.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
