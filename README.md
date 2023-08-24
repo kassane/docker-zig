@@ -1,6 +1,6 @@
 # Docker-Zig
 
-**DockerHub:** https://hub.docker.com/repository/docker/kassany
+**DockerHub:** https://hub.docker.com/repositories/kassany
 
 Minimal Container to use Zig toolchain. Downloaded by [zigup](https://github.com/marler8997/zigup) (Thx [@marler8997](https://github.com/marler8997))
 
