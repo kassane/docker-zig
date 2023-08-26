@@ -17,14 +17,20 @@ RUN wget -q https://github.com/marler8997/zigup/releases/download/v2023_07_27/zi
     unzip zigup.ubuntu-latest-$(uname -m).zip -d /usr/bin \
     && chmod +x /usr/bin/zigup \
     && zigup --install-dir /zig ${ZIG_VERSION} \
-    && chmod -R a+w ${ZIG_PATH}
+    && chmod -R a+w ${ZIG_PATH} \
+    && mkdir /app
 
-RUN apt remove -y --auto-remove \
+WORKDIR /app
+
+RUN apt autoclean \
+    && apt remove -y --auto-remove \
         wget \
         ca-certificates \
         unzip \
         xz-utils \
         ; \
+    rm /zigup.ubuntu-latest-$(uname -m).zip \
+    /usr/bin/zigup; \
     rm -rf /var/lib/apt/lists/*;
 
 ARG UNAME=ziguana
@@ -32,5 +38,7 @@ ARG UID=1000
 ARG GID=1000
 RUN groupadd -g $GID -o $UNAME
 RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
+
+RUN chown -R $UNAME:$UNAME /app
 
 USER $UNAME

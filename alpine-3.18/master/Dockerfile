@@ -15,7 +15,12 @@ RUN wget -q https://github.com/marler8997/zigup/releases/download/v2023_07_27/zi
     unzip zigup.ubuntu-latest-$(uname -m).zip -d /usr/bin \
     && chmod +x /usr/bin/zigup \
     && zigup --install-dir /zig ${ZIG_VERSION} \
-    && chmod -R a+w ${ZIG_PATH}
+    && chmod -R a+w ${ZIG_PATH} \
+    && rm zigup.ubuntu-latest-$(uname -m).zip \
+    /usr/bin/zigup; \
+    mkdir /app
+
+WORKDIR /app
 
 ARG UNAME=ziguana
 ARG UID=1000
@@ -29,5 +34,7 @@ RUN adduser \
     --no-create-home \
     --uid "$UID" \
     "$UNAME"
+
+RUN chown -R $UNAME:$UNAME /app
 
 USER $UNAME
