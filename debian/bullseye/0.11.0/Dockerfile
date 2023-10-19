@@ -1,8 +1,4 @@
-ARG IMAGE=debian
-ARG BASE_VERSION=bullseye
-ARG IMAGE_ARCH=amd64
-
-FROM --platform=linux/${IMAGE_ARCH} ${IMAGE}:${BASE_VERSION}
+FROM debian:bullseye
 
 ENV ZIG_VERSION=0.11.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
@@ -13,14 +9,23 @@ RUN apt update && apt install -y --no-install-recommends \
         unzip \
         xz-utils
 
-RUN wget -q https://github.com/marler8997/zigup/releases/download/v2023_07_27/zigup.ubuntu-latest-$(uname -m).zip && \
-    unzip zigup.ubuntu-latest-$(uname -m).zip -d /usr/bin \
-    && chmod +x /usr/bin/zigup \
-    && zigup --install-dir /zig ${ZIG_VERSION} \
-    && chmod -R a+w ${ZIG_PATH} \
-    && mkdir /app
+RUN dpkgArch="$(dpkg --print-architecture)"; \
+    case "${dpkgArch##*-}" in \
+        amd64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
+        armhf) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
+        arm64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
+        riscv64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-riscv64.zip' ;; \
+        ppc64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc.zip' ;; \
+        ppc64le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        i386) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
+        *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
+    esac; \
+    wget -q "$zigupURL" && \
+    unzip -q "$(basename $zigupURL)" -d /usr/bin && \
+    chmod +x /usr/bin/zigup && \
+    zigup --install-dir /zig ${ZIG_VERSION}
 
-WORKDIR /app
+RUN chmod +x ${ZIG_PATH}/zig
 
 RUN apt autoclean \
     && apt remove -y --auto-remove \
@@ -32,13 +37,3 @@ RUN apt autoclean \
     rm /zigup.ubuntu-latest-$(uname -m).zip \
     /usr/bin/zigup; \
     rm -rf /var/lib/apt/lists/*;
-
-ARG UNAME=ziguana
-ARG UID=1000
-ARG GID=1000
-RUN groupadd -g $GID -o $UNAME
-RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
-
-RUN chown -R $UNAME:$UNAME /app
-
-USER $UNAME
