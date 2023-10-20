@@ -34,6 +34,6 @@ RUN apt autoclean \
         unzip \
         xz-utils \
         ; \
-    rm /zigup.ubuntu-latest-$(uname -m).zip \
+    rm /*.zip \
     /usr/bin/zigup; \
     rm -rf /var/lib/apt/lists/*;

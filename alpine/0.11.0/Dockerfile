@@ -10,12 +10,18 @@ RUN apk add --no-cache \
         ca-certificates \
         wget
 
-RUN wget -q https://github.com/marler8997/zigup/releases/download/v2023_07_27/zigup.ubuntu-latest-$(uname -m).zip && \
-    unzip zigup.ubuntu-latest-$(uname -m).zip -d /usr/bin \
-    && chmod +x /usr/bin/zigup \
-    && zigup --install-dir /zig ${ZIG_VERSION} \
+RUN apkArch="$(apk --print-arch)"; \
+    case "$apkArch" in \
+        x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
+        aarch64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
+        *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
+    esac; \
+    wget -q "$zigupURL" && \
+    unzip -q "$(basename $zigupURL)" -d /usr/bin && \
+    chmod +x /usr/bin/zigup && \
+    zigup --install-dir /zig ${ZIG_VERSION} \
     && chmod -R a+w ${ZIG_PATH} \
-    && rm zigup.ubuntu-latest-$(uname -m).zip \
+    && rm $PWD/*.zip \
     /usr/bin/zigup; \
     mkdir /app
 
