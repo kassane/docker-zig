@@ -1,5 +1,5 @@
 ARG IMAGE=alpine
-ARG BASE_VERSION=3.18
+ARG BASE_VERSION=latest
 
 FROM ${IMAGE}:${BASE_VERSION}
 
@@ -14,6 +14,8 @@ RUN apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
         x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
         aarch64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
+        armhf) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
+        ppc64le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \

@@ -37,7 +37,7 @@ jobs:
         with:
           file: debian/slim/bookworm/0.11.0/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.11.0
 
@@ -46,7 +46,7 @@ jobs:
         with:
           file: debian/slim/bookworm/master/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
 
@@ -64,7 +64,7 @@ jobs:
         with:
           file: alpine/0.11.0/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.11.0
 
@@ -73,6 +73,6 @@ jobs:
         with:
           file: alpine/master/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:latest
