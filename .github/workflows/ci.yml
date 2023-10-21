@@ -55,7 +55,7 @@ jobs:
         with:
           file: busybox/0.11.0/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
+          platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.11.0
 
@@ -64,7 +64,7 @@ jobs:
         with:
           file: busybox/master/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
+          platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:latest
       

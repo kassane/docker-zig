@@ -14,11 +14,11 @@ RUN unameArch="$(uname -m)"; \
         ppc4le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
         *) echo >&2 "unsupported architecture: $unameArch"; exit 1 ;; \
     esac; \
-    wget -q "$zigupURL" && \
+    wget --no-check-certificate -q "$zigupURL" && \
     unzip -q "$(basename $zigupURL)" -d /usr/bin && \
     chmod +x /usr/bin/zigup && \
-    rm $PWD/*.zip /usr/bin/zigup && \
-    zigup --install-dir /zig ${ZIG_VERSION}
+    zigup --install-dir /zig ${ZIG_VERSION} && \
+    rm $PWD/*.zip /usr/bin/zigup
 
 FROM ${ZIG_BASE_IMAGE}
 COPY --from=fetch /usr/bin/zig /bin/zig

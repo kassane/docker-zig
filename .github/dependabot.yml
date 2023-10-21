@@ -6,8 +6,100 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
 
+  # Dockerfiles.
+
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/busybox/0.11.0"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/busybox/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/alpine/0.11.0"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/alpine/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/slim/bookworm/0.11.0"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/slim/bookworm/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/bookworm/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/bookworm/0.11.0"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/slim/bullseye/0.11.0"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/slim/bullseye/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/bullseye/0.11.0"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/debian/bullseye/master"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
