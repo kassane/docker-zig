@@ -5,12 +5,20 @@ FROM busybox as fetch
 ENV ZIG_VERSION=0.11.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
-RUN wget -q https://github.com/marler8997/zigup/releases/download/v2023_07_27/zigup.ubuntu-latest-$(uname -m).zip && \
-    unzip zigup.ubuntu-latest-$(uname -m).zip -d /usr/bin \
-    && chmod +x /usr/bin/zigup \
-    && zigup --install-dir /zig $ZIG_VERSION \
-    && chmod -R a+w ${ZIG_PATH} \
-    && rm zigup.ubuntu-latest-$(uname -m).zip /usr/bin/zigup
+RUN unameArch="$(uname -m)"; \
+    case "$unameArch" in \
+        x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
+        arm64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
+        armv7l) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
+        riscv64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-riscv64.zip' ;; \
+        ppc4le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        *) echo >&2 "unsupported architecture: $unameArch"; exit 1 ;; \
+    esac; \
+    wget -q "$zigupURL" && \
+    unzip -q "$(basename $zigupURL)" -d /usr/bin && \
+    chmod +x /usr/bin/zigup && \
+    rm $PWD/*.zip /usr/bin/zigup && \
+    zigup --install-dir /zig ${ZIG_VERSION}
 
 FROM ${ZIG_BASE_IMAGE}
 COPY --from=fetch /usr/bin/zig /bin/zig
