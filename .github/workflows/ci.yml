@@ -1,4 +1,4 @@
-name: ci
+name: Docker CI
 
 on:
   push:
@@ -13,7 +13,6 @@ on:
   #          │  │ │ │ │
   #          │  │ │ │ │
   #          │  │ │ │ │
-  #          13 8 * * 0
     - cron: '13 8 * * 0'
 
 jobs:
@@ -50,14 +49,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
 
-      - name: Build and push - Busybox [0.11.0]
-        uses: docker/build-push-action@v5
-        with:
-          file: busybox/0.11.0/Dockerfile
-          context: .
-          platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.11.0
+      # - name: Build and push - Busybox [0.11.0]
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     file: busybox/0.11.0/Dockerfile
+      #     context: .
+      #     platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
+      #     push: true
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.11.0
 
       - name: Build and push - Busybox [master]
         uses: docker/build-push-action@v5
