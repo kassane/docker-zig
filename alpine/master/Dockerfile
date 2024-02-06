@@ -8,6 +8,7 @@ ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apk add --no-cache \
         ca-certificates \
+        sudo \
         wget
 
 RUN apkArch="$(apk --print-arch)"; \
@@ -41,6 +42,8 @@ RUN adduser \
     --no-create-home \
     --uid "$UID" \
     "$UNAME"
+RUN echo "$UNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$UNAME \
+        && chmod 0440 /etc/sudoers.d/$UNAME
 
 RUN chown -R $UNAME:$UNAME /app
 
