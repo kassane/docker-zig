@@ -11,12 +11,12 @@ RUN apt update && apt install -y --no-install-recommends \
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \
     case "${dpkgArch##*-}" in \
-        amd64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
-        armhf) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
-        arm64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
-        riscv64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-riscv64.zip' ;; \
-        ppc64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc.zip' ;; \
-        ppc64el) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        amd64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-x86_64.zip' ;; \
+        armhf) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-armv7a.zip' ;; \
+        arm64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-aarch64.zip' ;; \
+        riscv64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-riscv64.zip' ;; \
+        ppc64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-powerpc.zip' ;; \
+        ppc64el) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-powerpc64le.zip' ;; \
         i386) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
     esac; \
