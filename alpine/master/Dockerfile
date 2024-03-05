@@ -13,10 +13,10 @@ RUN apk add --no-cache \
 
 RUN apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
-        x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-x86_64.zip' ;; \
-        aarch64) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-aarch64.zip' ;; \
-        armv7) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-armv7a.zip' ;; \
-        ppc64le) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
+        aarch64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
+        armv7) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
+        ppc64le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \
