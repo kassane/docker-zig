@@ -1,6 +1,6 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
-ENV ZIG_VERSION=master
+ENV ZIG_VERSION=0.12.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \

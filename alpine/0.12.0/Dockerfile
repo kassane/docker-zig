@@ -3,7 +3,7 @@ ARG BASE_VERSION=latest
 
 FROM ${IMAGE}:${BASE_VERSION}
 
-ENV ZIG_VERSION=0.11.0
+ENV ZIG_VERSION=0.12.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apk add --no-cache \
@@ -12,18 +12,18 @@ RUN apk add --no-cache \
 
 RUN apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
-        x86_64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
-        aarch64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
-        armv7) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
-        ppc64le) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        x86_64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-x86_64-linux.tar.gz' ;; \
+        aarch64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-aarch64-linux.tar.gz' ;; \
+        armv7) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-arm-linux.tar.gz' ;; \
+        ppc64le) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-powerpc64le-linux.tar.gz' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \
-    unzip -q "$(basename $zigupURL)" -d /usr/bin && \
+    tar -xzf "$(basename $zigupURL)" -C /usr/bin && \
     chmod +x /usr/bin/zigup && \
     zigup --install-dir /zig ${ZIG_VERSION} \
     && chmod -R a+w ${ZIG_PATH} \
-    && rm $PWD/*.zip \
+    && rm $PWD/*.tar.gz \
     /usr/bin/zigup; \
     mkdir /app
 

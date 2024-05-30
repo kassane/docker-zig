@@ -33,14 +33,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      # - name: Build and push - Debian [0.11.0]
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     file: debian/slim/bookworm/0.11.0/Dockerfile
-      #     context: .
-      #     platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.11.0
+      - name: Build and push - Debian [0.12.0]
+        uses: docker/build-push-action@v5
+        with:
+          file: debian/slim/bookworm/0.12.0/Dockerfile
+          context: .
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.12.0
 
       - name: Build and push - Debian [master]
         uses: docker/build-push-action@v5
@@ -51,14 +51,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
 
-      # - name: Build and push - Busybox [0.11.0]
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     file: busybox/0.11.0/Dockerfile
-      #     context: .
-      #     platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.11.0
+      - name: Build and push - Busybox [0.12.0]
+        uses: docker/build-push-action@v5
+        with:
+          file: busybox/0.12.0/Dockerfile
+          context: .
+          platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.12.0
 
       - name: Build and push - Busybox [master]
         uses: docker/build-push-action@v5
@@ -69,21 +69,21 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:latest
       
-      # - name: Build and push - Alpine [0.11.0]
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     file: alpine/0.11.0/Dockerfile
-      #     context: .
-      #     platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.11.0
+      - name: Build and push - Alpine [0.12.0]
+        uses: docker/build-push-action@v5
+        with:
+          file: alpine/0.12.0/Dockerfile
+          context: .
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.12.0
 
       - name: Build and push - Alpine [master]
         uses: docker/build-push-action@v5
         with:
           file: alpine/master/Dockerfile
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:latest
 

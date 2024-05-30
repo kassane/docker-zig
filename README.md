@@ -7,7 +7,7 @@ Minimal Container to use Zig toolchain. Downloaded by [zigup](https://github.com
 #### Tags = version
 
 - `latest`: `master`
-- `0.11.0`: `0.11.0`
+- `0.12.0`: `0.12.0`
 
 ```bash
 ## busybox (x86_64)

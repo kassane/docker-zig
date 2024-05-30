@@ -5,23 +5,22 @@ ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
         wget \
-        ca-certificates \
-        unzip \
+        ca-certificates \    
         xz-utils
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \
     case "${dpkgArch##*-}" in \
-        amd64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-x86_64.zip' ;; \
-        armhf) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-armv7a.zip' ;; \
-        arm64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-aarch64.zip' ;; \
-        riscv64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-riscv64.zip' ;; \
-        ppc64) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc.zip' ;; \
-        ppc64el) zigupURL='https://github.com/kassane/zigup/releases/download/2023_09_29/zigup.ubuntu-latest-powerpc64le.zip' ;; \
+        amd64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-x86_64-linux.tar.gz' ;; \
+        armhf) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-arm-linux.tar.gz' ;; \
+        arm64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-aarch64-linux.tar.gz' ;; \
+        riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-riscv64-linux.tar.gz' ;; \
+        ppc64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-powerpc-linux.tar.gz' ;; \
+        ppc64el) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-powerpc64le-linux.tar.gz' ;; \
         i386) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \
-    unzip -q "$(basename $zigupURL)" -d /usr/bin && \
+    tar -xzf "$(basename $zigupURL)" -C /usr/bin && \
     chmod +x /usr/bin/zigup && \
     zigup --install-dir /zig ${ZIG_VERSION}
 
@@ -31,9 +30,9 @@ RUN apt autoclean \
     && apt remove -y --auto-remove \
         wget \
         ca-certificates \
-        unzip \
+        
         xz-utils \
         ; \
-    rm /*.zip \
+    rm /*.tar.gz \
     /usr/bin/zigup; \
     rm -rf /var/lib/apt/lists/*;
