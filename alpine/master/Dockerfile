@@ -17,6 +17,7 @@ RUN apkArch="$(apk --print-arch)"; \
         aarch64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-aarch64-linux.tar.gz' ;; \
         armv7) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-arm-linux.tar.gz' ;; \
         ppc64le) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-powerpc64le-linux.tar.gz' ;; \
+        riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-riscv64-linux.tar.gz' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \
