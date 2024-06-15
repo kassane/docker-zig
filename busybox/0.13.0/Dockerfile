@@ -2,7 +2,7 @@ ARG ZIG_BASE_IMAGE=scratch
 
 FROM busybox as fetch
 
-ENV ZIG_VERSION=master
+ENV ZIG_VERSION=0.13.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN unameArch="$(uname -m)"; \
@@ -22,5 +22,5 @@ RUN unameArch="$(uname -m)"; \
 
 FROM ${ZIG_BASE_IMAGE}
 COPY --from=fetch /usr/bin/zig /bin/zig
-COPY --from=fetch /zig/master/files/lib /lib
+COPY --from=fetch /zig/0.13.0/files/lib /lib
 ENTRYPOINT ["/bin/zig"]
