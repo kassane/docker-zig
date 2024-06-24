@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       # - name: Build and push - Debian [0.13.0]
-      #   uses: docker/build-push-action@v5
+      #   uses: docker/build-push-action@v6
       #   with:
       #     file: debian/slim/bookworm/0.13.0/Dockerfile
       #     context: .
@@ -43,7 +43,7 @@ jobs:
       #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.13.0
 
       - name: Build and push - Debian [master]
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           file: debian/slim/bookworm/master/Dockerfile
           context: .
@@ -52,7 +52,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
 
       # - name: Build and push - Busybox [0.13.0]
-      #   uses: docker/build-push-action@v5
+      #   uses: docker/build-push-action@v6
       #   with:
       #     file: busybox/0.13.0/Dockerfile
       #     context: .
@@ -61,7 +61,7 @@ jobs:
       #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.13.0
 
       - name: Build and push - Busybox [master]
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           file: busybox/master/Dockerfile
           context: .
@@ -70,7 +70,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:latest
       
       # - name: Build and push - Alpine [0.13.0]
-      #   uses: docker/build-push-action@v5
+      #   uses: docker/build-push-action@v6
       #   with:
       #     file: alpine/0.13.0/Dockerfile
       #     context: .
@@ -79,7 +79,7 @@ jobs:
       #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.13.0
 
       - name: Build and push - Alpine [master]
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           file: alpine/master/Dockerfile
           context: .
