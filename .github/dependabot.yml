@@ -9,7 +9,7 @@ updates:
   # Dockerfiles.
 
   - package-ecosystem: "docker"
-    directory: "/busybox/0.13.0"
+    directory: "/busybox/0.14.0"
     schedule:
       interval: "weekly"
     labels:
@@ -25,7 +25,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/alpine/0.13.0"
+    directory: "/alpine/0.14.0"
     schedule:
       interval: "weekly"
     labels:
@@ -41,7 +41,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/slim/bookworm/0.13.0"
+    directory: "/debian/slim/bookworm/0.14.0"
     schedule:
       interval: "weekly"
     labels:
@@ -65,7 +65,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/bookworm/0.13.0"
+    directory: "/debian/bookworm/0.14.0"
     schedule:
       interval: "weekly"
     labels:
@@ -73,7 +73,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/slim/bullseye/0.13.0"
+    directory: "/debian/slim/bullseye/0.14.0"
     schedule:
       interval: "weekly"
     labels:
@@ -89,7 +89,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/bullseye/0.13.0"
+    directory: "/debian/bullseye/0.14.0"
     schedule:
       interval: "weekly"
     labels:

@@ -1,11 +1,11 @@
-FROM debian:bullseye
+FROM debian:bullseye-slim
 
-ENV ZIG_VERSION=0.13.0
+ENV ZIG_VERSION=0.14.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
         wget \
-        ca-certificates \ 
+        ca-certificates \
         xz-utils
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \
@@ -30,7 +30,6 @@ RUN apt autoclean \
     && apt remove -y --auto-remove \
         wget \
         ca-certificates \
-        
         xz-utils \
         ; \
     rm /*.tar.gz \

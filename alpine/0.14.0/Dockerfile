@@ -3,7 +3,7 @@ ARG BASE_VERSION=latest
 
 FROM ${IMAGE}:${BASE_VERSION}
 
-ENV ZIG_VERSION=0.13.0
+ENV ZIG_VERSION=0.14.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apk add --no-cache \
