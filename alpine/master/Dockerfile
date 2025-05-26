@@ -13,11 +13,12 @@ RUN apk add --no-cache \
 
 RUN apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
-        x86_64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-x86_64-linux.tar.gz' ;; \
-        aarch64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-aarch64-linux.tar.gz' ;; \
-        armv7) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-arm-linux.tar.gz' ;; \
-        ppc64le) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-powerpc64le-linux.tar.gz' ;; \
-        riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-riscv64-linux.tar.gz' ;; \
+        x86_64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-x86_64-linux.tar.gz' ;; \
+        aarch64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-aarch64-linux.tar.gz' ;; \
+        armv7) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-arm-linux.tar.gz' ;; \
+        ppc64le) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc64le-linux.tar.gz' ;; \
+        riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-riscv64-linux.tar.gz' ;; \
+        s390x) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup-s390x-linux.tar.gz' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \
