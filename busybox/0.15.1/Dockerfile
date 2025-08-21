@@ -2,7 +2,7 @@ ARG ZIG_BASE_IMAGE=scratch
 
 FROM busybox as fetch
 
-ENV ZIG_VERSION=master
+ENV ZIG_VERSION=0.15.1
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 # Download CA certificates manually
@@ -27,5 +27,5 @@ RUN unameArch="$(uname -m)"; \
 
 FROM ${ZIG_BASE_IMAGE}
 COPY --from=fetch /usr/bin/zig /bin/zig
-COPY --from=fetch /zig/master/files/lib /lib
+COPY --from=fetch /zig/0.15.1/files/lib /lib
 ENTRYPOINT ["/bin/zig"]

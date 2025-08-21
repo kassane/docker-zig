@@ -33,14 +33,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      # - name: Build and push - Debian [0.14.0]
+      # - name: Build and push - Debian [0.15.1]
       #   uses: docker/build-push-action@v6
       #   with:
-      #     file: debian/slim/bookworm/0.14.0/Dockerfile
+      #     file: debian/slim/bookworm/0.15.1/Dockerfile
       #     context: .
       #     platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
       #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.14.0
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.15.1
 
       - name: Build and push - Debian [master]
         uses: docker/build-push-action@v6
@@ -51,14 +51,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
 
-      # - name: Build and push - Busybox [0.14.0]
+      # - name: Build and push - Busybox [0.15.1]
       #   uses: docker/build-push-action@v6
       #   with:
-      #     file: busybox/0.14.0/Dockerfile
+      #     file: busybox/0.15.1/Dockerfile
       #     context: .
       #     platforms: linux/amd64 #,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64
       #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.14.0
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:0.15.1
 
       - name: Build and push - Busybox [master]
         uses: docker/build-push-action@v6
@@ -69,14 +69,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziglang:latest
       
-      # - name: Build and push - Alpine [0.14.0]
+      # - name: Build and push - Alpine [0.15.1]
       #   uses: docker/build-push-action@v6
       #   with:
-      #     file: alpine/0.14.0/Dockerfile
+      #     file: alpine/0.15.1/Dockerfile
       #     context: .
       #     platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/riscv64,linux/s390x
       #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.14.0
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/alpine-ziglang:0.15.1
 
       - name: Build and push - Alpine [master]
         uses: docker/build-push-action@v6

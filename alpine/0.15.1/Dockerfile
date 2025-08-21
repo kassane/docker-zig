@@ -3,7 +3,7 @@ ARG BASE_VERSION=latest
 
 FROM ${IMAGE}:${BASE_VERSION}
 
-ENV ZIG_VERSION=0.14.0
+ENV ZIG_VERSION=0.15.1
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apk add --no-cache \
@@ -17,6 +17,7 @@ RUN apkArch="$(apk --print-arch)"; \
         armv7) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup-arm-linux.tar.gz' ;; \
         ppc64le) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc64le-linux.tar.gz' ;; \
         riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-riscv64-linux.tar.gz' ;; \
+        s390x) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup-s390x-linux.tar.gz' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
     wget -q "$zigupURL" && \

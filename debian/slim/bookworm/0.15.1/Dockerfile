@@ -1,6 +1,6 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
-ENV ZIG_VERSION=0.14.0
+ENV ZIG_VERSION=0.15.1
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
@@ -16,6 +16,7 @@ RUN dpkgArch="$(dpkg --print-architecture)"; \
         riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-riscv64-linux.tar.gz' ;; \
         ppc64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc-linux.tar.gz' ;; \
         ppc64el) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc64le-linux.tar.gz' ;; \
+        s390x) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup-s390x-linux.tar.gz' ;; \
         i386) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
     esac; \

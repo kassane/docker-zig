@@ -1,11 +1,11 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
-ENV ZIG_VERSION=0.14.0
+ENV ZIG_VERSION=0.15.1
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
         wget \
-        ca-certificates \   
+        ca-certificates \ 
         xz-utils
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \
