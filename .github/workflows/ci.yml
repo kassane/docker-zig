@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
       - name: Apply workaround for sudo bug (https://github.com/multiarch/qemu-user-static/issues/17)
         run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credential yes
       - name: Set up Docker Buildx
