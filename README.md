@@ -12,6 +12,7 @@ Minimal Container to use Zig toolchain. Downloaded by [zigup](https://github.com
 - `0.13.0`: `0.13.0`
 - `0.14.0`: `0.14.0`
 - `0.15.1`: `0.15.1`
+- `0.16.0`: `0.16.0`
 
 ```bash
 ## busybox (x86_64)

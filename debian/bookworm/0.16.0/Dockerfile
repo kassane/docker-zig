@@ -1,11 +1,11 @@
-FROM debian:bookworm-slim
+FROM debian:bookworm
 
-ENV ZIG_VERSION=0.15.1
+ENV ZIG_VERSION=0.16.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
         wget \
-        ca-certificates \
+        ca-certificates \   
         xz-utils
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \
@@ -16,7 +16,6 @@ RUN dpkgArch="$(dpkg --print-architecture)"; \
         riscv64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-riscv64-linux.tar.gz' ;; \
         ppc64) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc-linux.tar.gz' ;; \
         ppc64el) zigupURL='https://github.com/marler8997/zigup/releases/download/v2025_05_24/zigup-powerpc64le-linux.tar.gz' ;; \
-        s390x) zigupURL='https://github.com/kassane/zigup/releases/download/2024_03_05/zigup-s390x-linux.tar.gz' ;; \
         i386) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
     esac; \
@@ -31,6 +30,7 @@ RUN apt autoclean \
     && apt remove -y --auto-remove \
         wget \
         ca-certificates \
+        
         xz-utils \
         ; \
     rm /*.tar.gz \

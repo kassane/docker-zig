@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-ENV ZIG_VERSION=0.15.1
+ENV ZIG_VERSION=0.16.0
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
