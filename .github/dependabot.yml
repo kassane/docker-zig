@@ -41,7 +41,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/slim/bookworm/0.16.0"
+    directory: "/debian/slim/0.16.0"
     schedule:
       interval: "weekly"
     labels:
@@ -49,7 +49,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/slim/bookworm/master"
+    directory: "/debian/slim/master"
     schedule:
       interval: "weekly"
     labels:
@@ -57,7 +57,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/bookworm/master"
+    directory: "/debian/master"
     schedule:
       interval: "weekly"
     labels:
@@ -65,7 +65,7 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "docker"
-    directory: "/debian/bookworm/0.16.0"
+    directory: "/debian/0.16.0"
     schedule:
       interval: "weekly"
     labels:

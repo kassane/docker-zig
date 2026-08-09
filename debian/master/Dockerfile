@@ -1,11 +1,11 @@
-FROM debian:bullseye
+FROM debian:stable
 
 ENV ZIG_VERSION=master
 ENV ZIG_PATH=/zig/${ZIG_VERSION}/files
 
 RUN apt update && apt install -y --no-install-recommends \
         wget \
-        ca-certificates \    
+        ca-certificates \
         xz-utils
 
 RUN dpkgArch="$(dpkg --print-architecture)"; \

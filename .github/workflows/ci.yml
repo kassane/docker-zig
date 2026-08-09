@@ -36,20 +36,20 @@ jobs:
       # - name: Build and push - Debian [0.16.0]
       #   uses: docker/build-push-action@v7
       #   with:
-      #     file: debian/slim/bookworm/0.16.0/Dockerfile
+      #     file: debian/slim/0.16.0/Dockerfile
       #     context: .
       #     platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
       #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:0.16.0
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/debian-ziglang:0.16.0
 
       - name: Build and push - Debian [master]
         uses: docker/build-push-action@v7
         with:
-          file: debian/slim/bookworm/master/Dockerfile
+          file: debian/slim/master/Dockerfile
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookworm-ziglang:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/debian-ziglang:latest
 
       # - name: Build and push - Busybox [0.16.0]
       #   uses: docker/build-push-action@v7
